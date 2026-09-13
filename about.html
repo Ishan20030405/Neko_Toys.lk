@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Neko Toys</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── About Page Styles ── */
+        .about-hero {
+            background: linear-gradient(135deg, #1e272e 60%, #ff4757 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        .about-hero h2 {
+            font-size: 46px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .about-hero p {
+            font-size: 18px;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Story */
+        .about-story {
+            padding: 70px 0;
+            background: var(--white);
+        }
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .story-text h3 {
+            font-size: 30px;
+            color: var(--primary-color);
+            margin-bottom: 18px;
+        }
+        .story-text p {
+            color: var(--text-muted);
+            line-height: 1.9;
+            margin-bottom: 14px;
+        }
+        .story-img {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        .story-img img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Stats */
+        .about-stats {
+            background: var(--primary-color);
+            padding: 55px 0;
+            color: white;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .stat-item p {
+            font-size: 14px;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Why Us */
+        .about-why {
+            padding: 70px 0;
+            background: var(--light-bg);
+        }
+        .about-why .section-title { margin-bottom: 40px; }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .why-card {
+            background: white;
+            border-radius: 14px;
+            padding: 36px 28px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+        }
+        .why-icon {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff4757, #ff6b81);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 26px;
+            color: white;
+        }
+        .why-card h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+        .why-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* Shipping & Policy */
+        .about-policy {
+            padding: 70px 0;
+            background: white;
+        }
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .policy-card {
+            border: 2px solid #f1f2f6;
+            border-radius: 14px;
+            padding: 32px 28px;
+            transition: border-color 0.3s;
+        }
+        .policy-card:hover { border-color: var(--primary-color); }
+        .policy-card i {
+            font-size: 30px;
+            color: var(--primary-color);
+            margin-bottom: 14px;
+        }
+        .policy-card h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .policy-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* Contact CTA */
+        .about-cta {
+            background: linear-gradient(135deg, #1e272e, #2f3542);
+            padding: 70px 0;
+            text-align: center;
+            color: white;
+        }
+        .about-cta h3 {
+            font-size: 32px;
+            margin-bottom: 14px;
+        }
+        .about-cta p {
+            opacity: 0.8;
+            margin-bottom: 28px;
+            font-size: 16px;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+        }
+        .contact-item i {
+            font-size: 22px;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .story-grid, .stats-grid, .why-grid, .policy-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-hero h2 { font-size: 30px; }
+            .stat-item h3 { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Nav -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1><a href="index.html" style="color: inherit; text-decoration: none;">Neko<span>Toys</span></a></h1>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="new_arrivals.html">New Arrivals</a></li>
+                    <li><a href="about.html" style="color: var(--primary-color);">About</a></li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="about-hero">
+        <div class="container">
+            <h2>About Neko Toys</h2>
+            <p>Sri Lanka's premier destination for authentic anime figures, cosplay items, mangas & merchandise.</p>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="about-story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-text">
+                    <h3>Our Story</h3>
+                    <p>Neko Toys was born from a simple passion — a love for anime and the incredible worlds it creates. Founded in 2020 in Colombo, Sri Lanka, we started as a small online store with a handful of figures and a big dream.</p>
+                    <p>What began in a spare room has grown into one of Sri Lanka's most loved anime merchandise stores, shipping authentic, high-quality figures and collectibles to fans all across the island.</p>
+                    <p>Every product we carry is hand-picked by our team of anime enthusiasts. We know the difference between a quality scale figure and a cheap knock-off — and we only stock the best.</p>
+                    <a href="shop.html" class="btn btn-primary" style="display:inline-block; margin-top:10px;">Explore Our Shop</a>
+                </div>
+                <div class="story-img">
+                    <img src="images/levi.jpg" alt="Neko Toys Featured Figure">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="about-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Products in Stock</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10K+</h3>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4+</h3>
+                    <p>Years of Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>25+</h3>
+                    <p>Anime Series Covered</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="about-why">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>100% Authentic</h4>
+                    <p>All our figures and merchandise are sourced from official manufacturers and trusted distributors. No bootlegs, ever.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-truck"></i></div>
+                    <h4>Island-Wide Delivery</h4>
+                    <p>We deliver to all 25 districts in Sri Lanka. Fast, reliable, and fully tracked shipping on every order.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-heart"></i></div>
+                    <h4>Curated by Fans</h4>
+                    <p>Our collection is hand-picked by a team of passionate anime fans who understand quality and what collectors truly want.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-tag"></i></div>
+                    <h4>Best Prices in LKR</h4>
+                    <p>We price everything in Sri Lankan Rupees with no hidden import fees. What you see is what you pay.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-undo"></i></div>
+                    <h4>Easy Returns</h4>
+                    <p>Not satisfied? We offer hassle-free returns within 7 days for any damaged or incorrectly shipped items.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-headset"></i></div>
+                    <h4>Dedicated Support</h4>
+                    <p>Our friendly support team is available 7 days a week via WhatsApp, email, and social media to assist you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shipping & Policies -->
+    <section class="about-policy">
+        <div class="container">
+            <h2 class="section-title">Shipping & Policies</h2>
+            <div class="policy-grid">
+                <div class="policy-card">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h4>Delivery Times</h4>
+                    <p>Colombo & suburbs: 1–2 business days.<br>Other districts: 3–5 business days.<br>We dispatch all orders within 24 hours of payment confirmation.</p>
+                </div>
+                <div class="policy-card">
+                    <i class="fas fa-box-open"></i>
+                    <h4>Packaging</h4>
+                    <p>Every order is carefully bubble-wrapped and packed in sturdy boxes to ensure your figures and items arrive in perfect condition — box and all.</p>
+                </div>
+                <div class="policy-card">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h4>Returns & Exchanges</h4>
+                    <p>We accept returns within 7 days for items that arrive damaged or are incorrect. Please contact us with photos and your order number.</p>
+                </div>
+                <div class="policy-card">
+                    <i class="fas fa-credit-card"></i>
+                    <h4>Payment Methods</h4>
+                    <p>We accept bank transfers, cash on delivery (Colombo area), and online card payments. All transactions are secured and encrypted.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="about-cta">
+        <div class="container">
+            <h3>Get in Touch With Us</h3>
+            <p>Have a question about a product, order, or pre-order? We'd love to hear from you!</p>
+            <a href="mailto:NekoToys@BBS.lk" class="btn btn-primary">Email Us</a>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>+94 77 123 4567</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>NekoToys@BBS.lk</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>@nekotoys.lk</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Colombo, Sri Lanka</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>Neko<span>Toys</span></h3>
+                <p>Bringing you the best authentic anime merchandise straight from Japan.</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p>Subscribe for updates on new pre-orders and sales!</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Neko Toys. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
